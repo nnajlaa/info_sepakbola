@@ -1,0 +1,19 @@
+{
+  "name": "Informasi Sepakbola",
+  "short_name": "Info Sepakbola",
+  "description": "Web sederhana berisi informasi lingkup sepakbola",
+  "theme_color": "#b0bec5",
+  "background_color": "#b0bec5",
+  "display": "standalone",
+  "start_url": "/index.html",
+  "icons": [
+    {
+      "src": "assets/football.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+
+// Available competitions : 2000,2001,2002,2003,2013,2014,2015,2016,2017,2018,2019,2021
+// API token : 3abd854de8ea4a918abd95700d6befa1
