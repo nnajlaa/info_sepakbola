@@ -14,9 +14,16 @@
 	<nav class="blue-grey lighten-3">
 	    <div class="nav-wrapper">
 	      <a href="#" class="brand-logo right" style="font-size: 20px;">INFO SEPAKBOLA &#9917;</a>
-	      <a href="./index.html" class="sidenav-trigger" data-target="nav-mobile">
-          	<i class="material-icons">arrow_back</i>
-          </a>
+	      <div id="klasemen">
+	      	<a href="./index.html" class="sidenav-trigger" data-target="nav-mobile">
+          		<i class="material-icons">arrow_back</i>
+          	</a>
+	      </div>
+	      <div id="favorit">
+	      	<a href="/#favorit" class="sidenav-trigger" data-target="nav-mobile">
+          		<i class="material-icons">arrow_back</i>
+          	</a>
+	      </div>
 
 	      <ul class="topnav left hide-on-med-and-down"></ul>
 	      <ul class="sidenav" id="nav-mobile"></ul>
@@ -44,7 +51,8 @@
 
 
 	<div class="fixed-action-btn" style="float: left; padding: 5px;">
-		<a class="btn-floating btn-large waves-effect waves-light red" id="save"><i class="material-icons">save</i></a>
+		<a class="btn-floating btn-large waves-effect waves-light blue" id="save"><i class="material-icons">save</i></a>
+		<a class="btn-floating btn-large waves-effect waves-light red" id="delete"><i class="material-icons">delete</i></a>
 	</div>
 
 	<script src="js/materialize.min.js"></script>
@@ -67,15 +75,22 @@
 	document.addEventListener("DOMContentLoaded", function() {
 		var urlParams = new URLSearchParams(window.location.search);
 		var fromSaved = urlParams.get("saved");
+		var id = urlParams.get("id");
 
         var btnSave = document.getElementById("save");
+        var btnDelete = document.getElementById("delete");
+        var abKla = document.getElementById("klasemen");
+        var abFav = document.getElementById("favorit");
+
 
         if(fromSaved){
         	btnSave.style.display = "none";
-        	getSavedTimById();
+        	abKla.style.display = "none";
        	}else{
-       		var item = getTimById();
-       	}
+       		btnDelete.style.display = "none";
+       		abFav.style.display = "none";
+       	}       	    	
+       	var item = getTimById();
 
         btnSave.onclick = function(){
         	console.log("clicked!!");
@@ -83,6 +98,14 @@
         		simpanTim(team);
         	});
         }
+
+        btnDelete.onclick = function(){
+        	console.log("Deleted!!");
+        	item.then(function(id){
+        		hapusTim(id);
+        		fromSaved = false;
+        	});
+        }       
     });
 	</script>
 </body>
