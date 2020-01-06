@@ -7,10 +7,8 @@ var idbPromised = idb.open("info-sepakbola", 1, function(upgradeDb){
 	}
 });
 
-//simpan tim:
 function simpanTim(team){
-	idbPromised
-		.then(function(db){
+	idbPromised.then(function(db){
 			var trans = db.transaction("teams", "readwrite");
 			var store = trans.objectStore("teams");
 			console.log(team);
@@ -33,14 +31,22 @@ function getAll(){
 	});
 }
 
-function getById(id){
+function hapusTim(id){
 	return new Promise(function(resolve, reject){
 		idbPromised.then(function(db){
-			var trans = db.transaction("teams", "readonly");
+			var trans = db.transaction("teams", "readwrite");
 			var store = trans.objectStore("teams");
-			return store.get(id);
-		}).then(function(team){
-			resolve(team)
+			console.log(id);
+			let id = { id: id}
+			store.delete(id);
+			return trans.complete;
+		}).then(function(id){
+			if(id != undefined){
+				resolve(id);
+			}else{
+				reject(id);
+			}
 		});
 	});
+	
 }

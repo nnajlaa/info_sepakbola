@@ -12,8 +12,11 @@
       "sizes": "512x512",
       "type": "image/png"
     }
-  ]
+  ],
+  "gcm_sender_id": "878249787169" //sender ID
+  //"gcmAPIKey": "AIzaSyBL_-hHwefLJmAFFgV-vdZuE2oj2ewwgjk" - legacy server key
 }
 
-// Available competitions : 2000,2001,2002,2003,2013,2014,2015,2016,2017,2018,2019,2021
-// API token : 3abd854de8ea4a918abd95700d6befa1
+
+//   "publicKey":"BGul_mKbtThe_hBvK9XM1PfAEOB7kF9K9o9IObw1D5PmSb1f6-SpcNViYUHnd3vuoFI7o1IdOiIpLVLq0zRyQ-M",
+//   "privateKey":"pro_oRsOCwVNSb6Bj0GnxqTQbAUm-qjV4SMmGGAns5s"

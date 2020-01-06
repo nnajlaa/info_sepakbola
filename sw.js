@@ -1,4 +1,4 @@
-var CACHE_NAME = "info-sepakbola-v.6.8";
+var CACHE_NAME = "info-sepakbola-v.6.9";
 var urlsToCache = [
 	"/",
 	"/assets/football.png",

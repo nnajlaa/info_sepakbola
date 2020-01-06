@@ -213,7 +213,7 @@ function getTimById(){
 									<tr>
 										<td>Website</td>
 										<td>:</td>
-										<td><a href="${data.website}"><p>${data.website}</p></td>
+										<td><p><a href="${data.website}">${data.website}</p></td>
 									</tr>
 									<tr>
 										<td>Email</td>
@@ -226,6 +226,7 @@ function getTimById(){
 					document.getElementById("body-content-tim").innerHTML = `${timHTML}`;
 					resolve(data);
 				});
+		
 	});	
 }
 
@@ -233,63 +234,18 @@ function getSavedTim(){
 	getAll().then(function(teams){
 		console.log(teams);
 		let timFav = "";
+		let timFavElm = document.getElementById("favorit");
 		teams.forEach(function(team){
 			timFav += `
-			<div class="card center-align" style="padding:5px">
+			<div class="card center-align" style="padding:10px">		
 				<div class="card-image">
 					<img src="${team.crestUrl.replace(/^http:\/\//i, 'https://')}" style="width:50px; display:inline;">
 				</div>
-				<div class="card-title center-align"><a href="../tim.html?id=${team.id}&saved=true"><b style="text-align:center; font-size:20px;">${team.shortName}</b></div>
+				<div class="card-title center-align">
+					<a href="../tim.html?id=${team.id}&saved=true"><b style="font-size:20px;">${team.shortName}</b></a>
+				</div>
 			</div>`;
 		});
-		document.getElementById("favorit").innerHTML = timFav;
-	});
-}
-
-function getSavedTimById(){
-	var urlParams = new URLSearchParams(window.location.search);
-	var id = urlParams.get("id"); 
-
-	getById(id).then(function(team){
-		timHTML = "";
-		var timHTML = `
-			<div class="card" style="padding:5px">
-				<div class="card-title center-align"><b>${team.shortName}</b></div>
-				<table class="striped" style="text-align:center;">
-					<tbody>
-						<tr>
-							<td>Area</td>
-							<td>:</td>
-							<td><p>${team.area.name}</p></td>
-						</tr>
-						<tr>
-							<td>Nama Lengkap</td>
-							<td>:</td>
-							<td><p>${team.name}</p></td>
-						</tr>
-						<tr>
-							<td>Alamat</td>
-							<td>:</td>
-							<td><p>${team.address}</p></td>
-						</tr>
-						<tr>
-							<td>Handphone</td>
-							<td>:</td>
-							<td><p>${team.phone}</p></td>
-						</tr>
-						<tr>
-							<td>Website</td>
-							<td>:</td>
-							<td><a href="${team.website}"><p>${team.website}</p></td>
-						</tr>
-						<tr>
-							<td>Email</td>
-							<td>:</td>
-							<td><p>${team.email}</p></td>
-						</tr>
-					</tbody>
-				</table>
-			</div>`;
-		document.getElementById("body-content-tim").innerHTML = timHTML;
+		timFavElm.innerHTML = `${timFav}`;
 	});
 }
